@@ -6,29 +6,35 @@ import SignupForm from "./_auth/forms/SignupForm";
 import AuthLayout from "./_auth/AuthLayout";
 import RootLayout from "./_root/RootLayout";
 import { Home } from "./_root/pages";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   const router = createBrowserRouter([
     {
-      element: <AuthLayout />,
+      element: <AuthProvider />,
       children: [
         {
-          path: "/sign-in",
-          element: <SigninForm />,
+          element: <AuthLayout />,
+          children: [
+            {
+              path: "/sign-in",
+              element: <SigninForm />,
+            },
+            {
+              path: "/sign-up",
+              element: <SignupForm />,
+            },
+          ],
         },
         {
-          path: "/sign-up",
-          element: <SignupForm />,
-        },
-      ],
-    },
-    {
-      path: "/",
-      element: <RootLayout />,
-      children: [
-        {
-          index: true,
-          element: <Home />,
+          path: "/",
+          element: <RootLayout />,
+          children: [
+            {
+              index: true,
+              element: <Home />,
+            },
+          ],
         },
       ],
     },

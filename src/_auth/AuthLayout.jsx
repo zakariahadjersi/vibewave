@@ -1,11 +1,12 @@
 import { Navigate, Outlet } from "react-router-dom";
+import useAuthContext from "../hooks/useAuthContext";
 
 function AuthLayout() {
-  const isAuthenticated = false;
+  const { sessionVerified } = useAuthContext();
 
   return (
     <>
-      {isAuthenticated ? (
+      { sessionVerified ? (
         <Navigate to="/" />
       ) : (
         <>
