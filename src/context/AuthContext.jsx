@@ -101,6 +101,26 @@ export const AuthProvider = () => {
     await handleAuth(BACKEND_URL + "/login", data);
   };
 
+  const logout = async () => {
+    try {
+      setSessionVerified(false);
+      await fetch(BACKEND_URL + "/logout", {
+        method:"POST",
+        credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "X-Requested-With": "XMLHttpRequest",
+            "X-XSRF-TOKEN": decodeURIComponent(getCookie("XSRF-TOKEN")),
+          }
+      });
+      setUser(INITIAL_USER);
+      localStorage.removeItem(SESSION_NAME);
+    } catch (error) {
+      console.warn("Error ", error);
+    }
+  }
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -109,11 +129,10 @@ export const AuthProvider = () => {
         console.warn(error);
       } finally {
         setIsLoading(false);
-        setSessionVerified(false);
       }
     };
     
-    if (!user) {
+    if (user.name == INITIAL_USER.name && localStorage.getItem(SESSION_NAME) != null) {
       fetchUser();
     }
   }, [user]);
@@ -125,6 +144,7 @@ export const AuthProvider = () => {
         user,
         register,
         login,
+        logout,
         isLoading,
         status,
         sessionVerified,
