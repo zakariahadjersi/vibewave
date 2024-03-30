@@ -4,7 +4,7 @@ import useAuthContext from "../hooks/useAuthContext";
 
 function Topbar() {
   const { logout, user } = useAuthContext();
-  
+
   return (
     <section className="d-flex flex-row justify-content-between d-block d-md-none w-100 bg-dark bg-gradient">
       <div className="d-flex justify-content-between align-items-center px-3 py-2">

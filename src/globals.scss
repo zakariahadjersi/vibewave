@@ -13,3 +13,12 @@
 body {
   font-family: "Inter", sans-serif;
 }
+
+.custom {
+  color: #6f42c1;
+}
+
+button:hover .custom,
+button:active .custom {
+  color: #fff;
+}
