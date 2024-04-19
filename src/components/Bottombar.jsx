@@ -5,7 +5,7 @@ function Bottombar() {
     const { pathname } = useLocation();
 
     return (
-        <section className="d-flex justify-content-between w-100 sticky-bottom rounded-top bg-dark p-3 d-md-none">
+        <section className="d-flex justify-content-between w-100 sticky-bottom rounded-top bg-dark bg-gradient p-3 d-md-none">
             {bottombarLinks.map((link) => {
                 const isActive = pathname === link.route;
 
