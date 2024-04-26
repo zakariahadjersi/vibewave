@@ -7,6 +7,7 @@ import AuthLayout from "./_auth/AuthLayout";
 import RootLayout from "./_root/RootLayout";
 import { AllUsers, CreatePoste, EditPoste, Explore, Home, PosteDetails, Profile, Saved, UpdateProfile } from "./_root/pages";
 import { AuthProvider } from "./context/AuthContext";
+import { postAction } from "./components/forms/PostForm";
 
 function App() {
   const router = createBrowserRouter([
@@ -49,6 +50,7 @@ function App() {
             {
               path: "/create-post",
               element: <CreatePoste />,
+              action: postAction
             },
             {
               path: "/update-post/:id",
