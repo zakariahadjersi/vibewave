@@ -1,10 +1,10 @@
-import { useCallback, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Fragment, useCallback, useState } from "react";
+import { Button, Form } from "react-bootstrap";
 import { useDropzone } from "react-dropzone";
-import {convertFileToUrl} from "../lib/utils";
+import { convertFileToUrl } from "../lib/utils";
 
-const FileUploader = ({ mediaUrl }) => {
-    const [file, setFile] = useState([]);
+const FileUploader = ({ mediaUrl, file, setFile }) => {
+    
     const [fileUrl, setFileUrl] = useState(mediaUrl);
 
     const onDrop = useCallback(
@@ -26,7 +26,8 @@ const FileUploader = ({ mediaUrl }) => {
         <div
             {...getRootProps()}
             className="d-flex flex-column justify-content-center align-items-center bg-dark rounded" role="button">
-            <input {...getInputProps()} role="button" name="file" />
+            {/* <input {...getInputProps()} role="button" /> */}
+            <Form.Control {...getInputProps()} />
 
             {fileUrl ? (
                 <>
@@ -37,7 +38,7 @@ const FileUploader = ({ mediaUrl }) => {
                 </>
             ) : (
                 <div className="d-flex flex-column justify-content-center align-items-center p-5 h-75">
-                    <i className="bi bi-card-image" style={{fontSize: 60}} />
+                    <i className="bi bi-card-image" style={{ fontSize: 60 }} />
                     <h3 className="fs-2 fw-medium lh-base text-light mb-1 mt-2">
                         Drag photo here
                     </h3>
