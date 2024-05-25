@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import FileUploader from "../FileUploader";
 import { Form as FormRouter, redirect, useSubmit } from "react-router-dom";
+import { getCookie } from "../../lib/utils";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const PostForm = ({ post }) => {
@@ -96,20 +97,3 @@ export const postAction = async ({ request }) => {
 }
 
 export default PostForm;
-
-const getCookie = (cookieName) => {
-    const cookieArray = document.cookie.split(";");
-
-    for (const cookie of cookieArray) {
-        let cookieString = cookie;
-
-        while (cookieString.charAt(0) == " ") {
-            cookieString = cookieString.substring(1, cookieString.length);
-        }
-        if (cookieString.indexOf(cookieName + "=") == 0) {
-            return cookieString.substring(cookieName.length + 1, cookieString.length);
-        }
-    }
-
-    return undefined;
-};
