@@ -1,5 +1,6 @@
 import { Spinner } from "react-bootstrap";
 import { json, useLoaderData } from "react-router-dom";
+import PostCard from "../../components/PostCard";
 import { getCookie } from "../../lib/utils";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -31,13 +32,12 @@ function Home() {
                         />
                     ) : (
                         <ul className="d-flex flex-column m-3 w-100 ">
-                            {/* {posts?.documents.map((post) => (
-                                <li key={post.$id} className="d-flex justify-content-center
+                            {posts?.map((post) => (
+                                <li key={post.id} className="d-flex justify-content-center
                                  w-100">
-                                    <PostCard post={post} />
+                                    <PostCard post={post} key={post.id} />
                                 </li>
-                            ))} */}
-                            Test
+                            ))}
                         </ul>
                     )}
                 </div>

@@ -4,7 +4,7 @@ import { useDropzone } from "react-dropzone";
 import { convertFileToUrl } from "../lib/utils";
 
 const FileUploader = ({ mediaUrl, file, setFile }) => {
-    
+
     const [fileUrl, setFileUrl] = useState(mediaUrl);
 
     const onDrop = useCallback(
@@ -26,7 +26,7 @@ const FileUploader = ({ mediaUrl, file, setFile }) => {
         <div
             {...getRootProps()}
             className="d-flex flex-column justify-content-center align-items-center bg-dark rounded" role="button">
-            {/* <input {...getInputProps()} role="button" /> */}
+
             <Form.Control {...getInputProps()} />
 
             {fileUrl ? (
